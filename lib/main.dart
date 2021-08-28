@@ -118,41 +118,65 @@ class _MyHomePageState extends State<MyHomePage>
 
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          color: const Color(0xFF266DD3),
-          child: TabBar(
-            controller: _tabController,
-            indicatorColor: Theme.of(context).accentColor,
-            tabs: [
-              Tab(
-                text: 'Parks',
-              ),
-              Tab(
-                text: 'Gate',
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            getInfo();
-          },
-          child: Icon(
-            Icons.cached,
-            size: 40,
-            color: Color(0xFFDFC2F2),
-          ),
-          backgroundColor: const Color(0xFF266DD3),
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            ParkingTab(
-              numberOfFreeSpaces: getNumberOfFreeSpaces(),
-              statuses: statuses,
+        backgroundColor: Theme.of(context).backgroundColor,
+        body: Center(
+          child: Container(
+            width: 600,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black38,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
             ),
-            GateTab(log: log),
-          ],
+            child: Scaffold(
+              bottomNavigationBar: BottomAppBar(
+                color: const Color(0xFF266DD3),
+                child: TabBar(
+                  controller: _tabController,
+                  indicatorColor: Theme.of(context).accentColor,
+                  tabs: [
+                    Tab(
+                      text: 'Parks',
+                    ),
+                    Tab(
+                      text: 'Gate',
+                    ),
+                  ],
+                ),
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  getInfo();
+                },
+                child: Icon(
+                  Icons.cached,
+                  size: 40,
+                  color: Color(0xFFDFC2F2),
+                ),
+                backgroundColor: const Color(0xFF266DD3),
+              ),
+              body: TabBarView(
+                controller: _tabController,
+                children: [
+                  ParkingTab(
+                    numberOfFreeSpaces: getNumberOfFreeSpaces(),
+                    statuses: statuses,
+                  ),
+                  GateTab(log: log),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
