@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_parking_lot_app/main.dart';
 import 'package:smart_parking_lot_app/services/ParkingInfo.dart';
 
 class ParkingTab extends StatefulWidget {

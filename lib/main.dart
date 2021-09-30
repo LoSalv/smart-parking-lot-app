@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
             ),
             bodyText1: const TextStyle(
               fontSize: 18,
-              color: const Color(0xFFCFB3CD),
+              // color: const Color(0xFFCFB3CD),
+              color: Colors.white,
             ),
             bodyText2: const TextStyle(
               fontSize: 18,
@@ -82,15 +83,6 @@ class _MyHomePageState extends State<MyHomePage>
 
     try {
       statuses = await Server.getParkingsStatus();
-      log = await Server.getGateLog();
-
-      for (LogEntry e in log!) {
-        print(e.toString());
-      }
-
-      setState(() {
-        _waiting = false;
-      });
 
       setState(() {
         _waiting = false;
@@ -172,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage>
                     numberOfFreeSpaces: getNumberOfFreeSpaces(),
                     statuses: statuses,
                   ),
-                  GateTab(log: log),
+                  GateTab(),
                 ],
               ),
             ),
